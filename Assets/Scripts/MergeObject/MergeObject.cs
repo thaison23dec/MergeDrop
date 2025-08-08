@@ -25,7 +25,7 @@ public class MergeObject : MonoBehaviour
                 block1 = gameObject;
                 block2 = collision.gameObject;
                 if (ID < block2.gameObject.GetComponent<MergeObject>().ID) return;
-                Vector2 mergedObjPos = new Vector2((block1.transform.position.x + block1.transform.position.x) / 2, (block1.transform.position.y + block1.transform.position.y) / 2);
+                Vector2 mergedObjPos = new Vector2((block1.transform.position.x + block2.transform.position.x) / 2, (block1.transform.position.y + block2.transform.position.y) / 2);
                 Instantiate(mergedObj, mergedObjPos, Quaternion.identity);
                 Destroy(gameObject);
                 Destroy(collision.gameObject);
