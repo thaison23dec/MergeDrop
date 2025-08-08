@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4949842731414785874}
   m_Layer: 0
   m_Name: CircleObject
-  m_TagString: Untagged
+  m_TagString: MergeObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -161,3 +161,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e2b4825cf037146bd2fabc3bc27dfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: 0
+  mergedObj: {fileID: 4627995942300512991, guid: 18cd8fdf9e5a79847a4ae95be8958d08, type: 3}

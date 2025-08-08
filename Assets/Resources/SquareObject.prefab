@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6643963471374860451}
   m_Layer: 0
   m_Name: SquareObject
-  m_TagString: Untagged
+  m_TagString: MergeObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -171,3 +171,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e2b4825cf037146bd2fabc3bc27dfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: 0
+  mergedObj: {fileID: 5530346077340714798, guid: b15b264a7964e3a4c9a35f9b62259a84, type: 3}
+  type: 2
