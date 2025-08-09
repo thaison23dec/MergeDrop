@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2781199148294052247}
   - component: {fileID: 7606654450389953585}
   - component: {fileID: 6643963471374860451}
+  - component: {fileID: -1461536002898478440}
   m_Layer: 0
   m_Name: SquareObject
   m_TagString: MergeObject
@@ -95,7 +96,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4627995942300512991}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -172,5 +173,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
-  mergedObj: {fileID: 5530346077340714798, guid: b15b264a7964e3a4c9a35f9b62259a84, type: 3}
+  mergedObj: {fileID: 7678482571310398301, guid: 81d918a0b2b54f4438cad34701524b1c, type: 3}
   type: 2
+--- !u!114 &-1461536002898478440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4627995942300512991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8e064835969d3044bf690a448669e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
