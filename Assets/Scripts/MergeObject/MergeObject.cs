@@ -5,11 +5,11 @@ using UnityEngine;
 public class MergeObject : MonoBehaviour
 {
     public int ID;
+    public bool hasMerged = false;
 
     [SerializeField] private GameObject mergedObj;
     [SerializeField] public MergeObjectType type;
-    private GameObject block1;
-    private GameObject block2;
+
 
     private void Start()
     {
@@ -18,18 +18,26 @@ public class MergeObject : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (gameObject.CompareTag(collision.gameObject.tag))
+        MergeObject other = collision.gameObject.GetComponent<MergeObject>();
+
+        if(other != null)
         {
-            if(type == collision.gameObject.GetComponent<MergeObject>().type)
-            {
-                block1 = gameObject;
-                block2 = collision.gameObject;
-                if (ID < block2.gameObject.GetComponent<MergeObject>().ID) return;
-                Vector2 mergedObjPos = new Vector2((block1.transform.position.x + block2.transform.position.x) / 2, (block1.transform.position.y + block2.transform.position.y) / 2);
-                Instantiate(mergedObj, mergedObjPos, Quaternion.identity);
-                Destroy(gameObject);
-                Destroy(collision.gameObject);
-            }
+            if (hasMerged || other.hasMerged) return;
+        }
+
+
+        if (gameObject.CompareTag(collision.gameObject.tag) && type == other.type)
+        {
+            if (ID < other.ID) return;
+
+            Vector2 mergedObjPos = (transform.position + other.transform.position) / 2f;
+            Instantiate(mergedObj, mergedObjPos, Quaternion.identity);
+
+            hasMerged = true;
+            other.hasMerged = true;
+
+            Destroy(gameObject);
+            Destroy(collision.gameObject);
         }
     }
 }
