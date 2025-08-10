@@ -4,7 +4,11 @@ using UnityEngine;
 
 public enum MergeObjectType
 {
-    Circle,
-    Capsule,
-    Square
+    Strawberry,
+    Graph,
+    Mango,
+    Orange,
+    Apple,
+    Watermelon,
+    Pumpkin
 }
