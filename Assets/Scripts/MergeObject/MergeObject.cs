@@ -6,6 +6,9 @@ public class MergeObject : MonoBehaviour
 {
     public int ID;
     public bool hasMerged = false;
+    public bool isDragging = false;
+    [SerializeField] public bool isDraggable = true;
+    public Rigidbody2D rb;
 
     [SerializeField] private GameObject mergedObj;
     [SerializeField] public MergeObjectType type;
@@ -14,15 +17,18 @@ public class MergeObject : MonoBehaviour
     private void Start()
     {
         ID = GetInstanceID();
+        rb = gameObject.GetComponent<Rigidbody2D>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+    
         MergeObject other = collision.gameObject.GetComponent<MergeObject>();
 
         if(other != null)
         {
             if (hasMerged || other.hasMerged) return;
+            if (isDraggable || other.isDraggable) return;
         }
 
 

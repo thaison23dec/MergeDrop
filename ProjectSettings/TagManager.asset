@@ -9,10 +9,10 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - GamePlay
   - Water
   - UI
-  - 
+  - MergeObject
   - 
   - 
   - 
@@ -41,4 +41,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: GamePlay
+    uniqueID: 485196909
+    locked: 0
+  - name: MergeObject
+    uniqueID: 1442984409
     locked: 0

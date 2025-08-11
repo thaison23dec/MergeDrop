@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4365210837292046647}
   - component: {fileID: 4894344026078389247}
   - component: {fileID: 4917427051284230024}
-  - component: {fileID: 6512355628402975384}
   - component: {fileID: 2079777388138478527}
   m_Layer: 0
   m_Name: Watermelon
@@ -129,20 +128,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 0
   hasMerged: 0
+  isDragging: 0
+  isDraggable: 1
+  rb: {fileID: 0}
   mergedObj: {fileID: 4150782879151880632, guid: cdfce08c55d52b6479475f0122de3e83, type: 3}
   type: 5
---- !u!114 &6512355628402975384
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1478822294207447743}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8e064835969d3044bf690a448669e06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!58 &2079777388138478527
 CircleCollider2D:
   m_ObjectHideFlags: 0

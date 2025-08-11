@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4318973272824213460}
   - component: {fileID: 5590503887145383863}
   - component: {fileID: 6912104058361976674}
-  - component: {fileID: 1111711581280176542}
   m_Layer: 0
   m_Name: Apple
   m_TagString: MergeObject
@@ -164,17 +163,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 0
   hasMerged: 0
+  isDragging: 0
+  isDraggable: 1
+  rb: {fileID: 0}
   mergedObj: {fileID: 7500353329253858539, guid: bdfee7f695bed444bb30405daeea3f01, type: 3}
   type: 4
---- !u!114 &1111711581280176542
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1923077457961493868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8e064835969d3044bf690a448669e06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

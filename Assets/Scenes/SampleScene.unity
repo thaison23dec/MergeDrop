@@ -391,6 +391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointer: {fileID: 1714651644}
+  canDrag: 1
   objectList:
   - {fileID: 5530346077340714798, guid: b15b264a7964e3a4c9a35f9b62259a84, type: 3}
   - {fileID: 4719720766532451539, guid: efa0e314c242b3b48b654ceeb82f7f77, type: 3}
@@ -398,6 +399,7 @@ MonoBehaviour:
   - {fileID: 3244834271136380167, guid: e39a8444c1f9c9e4da6c8fca2c85fb24, type: 3}
   - {fileID: 1923077457961493868, guid: bc014b4fd818a804bab692981972f14b, type: 3}
   currentFruit: {fileID: 0}
+  dragRange: 0
 --- !u!61 &933948890
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -796,6 +798,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1714651645}
+  - component: {fileID: 1714651646}
   m_Layer: 0
   m_Name: Pointer
   m_TagString: Untagged
@@ -819,6 +822,19 @@ Transform:
   - {fileID: 1156822352}
   m_Father: {fileID: 933948888}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1714651646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1714651644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9bea278b33c64e49bd7aed0116280de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointerIsDragging: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

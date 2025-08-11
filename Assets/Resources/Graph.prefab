@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5849875700870333926}
   - component: {fileID: 3508574015824410359}
   - component: {fileID: 4949842731414785874}
-  - component: {fileID: -6004910028179099703}
   - component: {fileID: 5022251799015027674}
   m_Layer: 0
   m_Name: Graph
@@ -129,20 +128,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 0
   hasMerged: 0
+  isDragging: 0
+  isDraggable: 1
+  rb: {fileID: 0}
   mergedObj: {fileID: 2046823097274017174, guid: 975786819258b6a409a11c820707f319, type: 3}
   type: 1
---- !u!114 &-6004910028179099703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4719720766532451539}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8e064835969d3044bf690a448669e06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!58 &5022251799015027674
 CircleCollider2D:
   m_ObjectHideFlags: 0

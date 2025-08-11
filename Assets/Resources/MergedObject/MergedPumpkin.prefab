@@ -128,6 +128,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 0
   hasMerged: 0
+  isDragging: 0
+  isDraggable: 0
+  rb: {fileID: 0}
   mergedObj: {fileID: 0}
   type: 6
 --- !u!70 &4631122056939452712
