@@ -12,6 +12,7 @@ public class GamePlayManager : MonoBehaviour
 
     [SerializeField] private List<GameObject> objectList;
     [SerializeField] private GameObject currentFruit;
+    [SerializeField] private AudioClip dropSoundClip;
 
     private BoxCollider2D dragRangeCollider;
     public float dragRange;
@@ -91,11 +92,12 @@ public class GamePlayManager : MonoBehaviour
     private void OnMouseUp()
     {
         if(pointer.GetComponent<Pointer>().pointerIsDragging == true)
-        { 
-            currentFruit.GetComponent<CircleCollider2D>().isTrigger = false;
+        {
+            SoundFXManager.instance.PlaySoundFXClip(dropSoundClip, currentFruit.transform, 1f);
             pointer.GetComponent<Pointer>().pointerIsDragging = false;
             currentFruit.GetComponent<MergeObject>().isDragging = false;
             currentFruit.GetComponent<MergeObject>().isDraggable = false;
+            currentFruit.GetComponent<CircleCollider2D>().isTrigger = false;
             currentFruit.GetComponent<MergeObject>().rb.bodyType = RigidbodyType2D.Dynamic;
             StartCoroutine("OnOffPointer");
             SpawnObject();

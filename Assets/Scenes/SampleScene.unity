@@ -393,12 +393,13 @@ MonoBehaviour:
   pointer: {fileID: 1714651644}
   canDrag: 1
   objectList:
-  - {fileID: 5530346077340714798, guid: b15b264a7964e3a4c9a35f9b62259a84, type: 3}
+  - {fileID: 1923077457961493868, guid: bc014b4fd818a804bab692981972f14b, type: 3}
   - {fileID: 4719720766532451539, guid: efa0e314c242b3b48b654ceeb82f7f77, type: 3}
   - {fileID: 4627995942300512991, guid: 18cd8fdf9e5a79847a4ae95be8958d08, type: 3}
   - {fileID: 3244834271136380167, guid: e39a8444c1f9c9e4da6c8fca2c85fb24, type: 3}
-  - {fileID: 1923077457961493868, guid: bc014b4fd818a804bab692981972f14b, type: 3}
+  - {fileID: 5530346077340714798, guid: b15b264a7964e3a4c9a35f9b62259a84, type: 3}
   currentFruit: {fileID: 0}
+  dropSoundClip: {fileID: 8300000, guid: 371a9448ad2e09143a9e33e25a0b4f6b, type: 3}
   dragRange: 0
 --- !u!61 &933948890
 BoxCollider2D:
@@ -649,7 +650,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0.2530508, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.50549936, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -789,6 +790,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1464678839
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1464678841}
+  - component: {fileID: 1464678840}
+  m_Layer: 0
+  m_Name: --SOUNDFX_MANAGER--
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1464678840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464678839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69932a2edfbfd7a4382e8018651fde0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sourceFXObject: {fileID: 995435498246860262, guid: 525321f4657d7c746818b628a6f69997, type: 3}
+--- !u!4 &1464678841
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464678839}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1714651644
 GameObject:
   m_ObjectHideFlags: 0
@@ -841,6 +887,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 933948888}
+  - {fileID: 1464678841}
   - {fileID: 502609294}
   - {fileID: 1161951274}
   - {fileID: 1078183841}

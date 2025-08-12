@@ -11,6 +11,7 @@ public class MergeObject : MonoBehaviour
     public Rigidbody2D rb;
 
     [SerializeField] private GameObject mergedObj;
+    [SerializeField] private AudioClip mergeSoundClip;
     [SerializeField] public MergeObjectType type;
 
 
@@ -38,6 +39,8 @@ public class MergeObject : MonoBehaviour
 
             Vector2 mergedObjPos = (transform.position + other.transform.position) / 2f;
             Instantiate(mergedObj, mergedObjPos, Quaternion.identity);
+
+            SoundFXManager.instance.PlaySoundFXClip(mergeSoundClip, mergedObj.transform, 1f);
 
             hasMerged = true;
             other.hasMerged = true;

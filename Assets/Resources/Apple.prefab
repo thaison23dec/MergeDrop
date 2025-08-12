@@ -167,4 +167,5 @@ MonoBehaviour:
   isDraggable: 1
   rb: {fileID: 0}
   mergedObj: {fileID: 7500353329253858539, guid: bdfee7f695bed444bb30405daeea3f01, type: 3}
+  mergeSoundClip: {fileID: 8300000, guid: 90a611591af39954590c0dc53f9286a3, type: 3}
   type: 4
