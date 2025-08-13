@@ -13,6 +13,7 @@ public class GamePlayManager : MonoBehaviour
     [SerializeField] private List<GameObject> objectList;
     [SerializeField] private GameObject currentFruit;
     [SerializeField] private AudioClip dropSoundClip;
+    [SerializeField] private Vector3 spawnTransform;
 
     private BoxCollider2D dragRangeCollider;
     public float dragRange;
@@ -27,7 +28,7 @@ public class GamePlayManager : MonoBehaviour
             Instance = this;
         }
 
-        pointer.transform.position = new Vector3(0f, 4f, 0f);
+        pointer.transform.position = spawnTransform;
         dragRangeCollider = gameObject.GetComponent<BoxCollider2D>();
     }
 
@@ -44,13 +45,13 @@ public class GamePlayManager : MonoBehaviour
             pointer.transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x + offSet.x, pointer.transform.position.y, pointer.transform.position.z);
             if (currentFruit != null)
             {
-                if (pointer.transform.position.x >= dragRange / 2 - currentFruit.GetComponent<CircleCollider2D>().radius - 0.5f)
+                if (pointer.transform.position.x >= dragRange / 2 - currentFruit.GetComponent<CircleCollider2D>().radius - 0.75f)
                 {
-                    pointer.transform.position = new Vector3(dragRange / 2 - currentFruit.GetComponent<CircleCollider2D>().radius - 0.5f, pointer.transform.position.y, pointer.transform.position.z);
+                    pointer.transform.position = new Vector3(dragRange / 2 - currentFruit.GetComponent<CircleCollider2D>().radius - 0.75f, pointer.transform.position.y, pointer.transform.position.z);
                 }
-                if (pointer.transform.position.x <= -dragRange / 2 + currentFruit.GetComponent<CircleCollider2D>().radius + 0.5f)
+                if (pointer.transform.position.x <= -dragRange / 2 + currentFruit.GetComponent<CircleCollider2D>().radius + 0.75f)
                 {
-                    pointer.transform.position = new Vector3(-dragRange / 2 + currentFruit.GetComponent<CircleCollider2D>().radius + 0.5f, pointer.transform.position.y, pointer.transform.position.z);
+                    pointer.transform.position = new Vector3(-dragRange / 2 + currentFruit.GetComponent<CircleCollider2D>().radius + 0.75f, pointer.transform.position.y, pointer.transform.position.z);
                 }
             }
         }
@@ -73,7 +74,7 @@ public class GamePlayManager : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (canDrag)
+        if (canDrag && !PauseManager.instance.IsPaused)
         {
             pointer.GetComponent<Pointer>().pointerIsDragging = true;
             pointer.transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, pointer.transform.position.y, pointer.transform.position.z);
@@ -91,7 +92,7 @@ public class GamePlayManager : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if(pointer.GetComponent<Pointer>().pointerIsDragging == true)
+        if(pointer.GetComponent<Pointer>().pointerIsDragging == true && !PauseManager.instance.IsPaused)
         {
             SoundFXManager.instance.PlaySoundFXClip(dropSoundClip, currentFruit.transform, 1f);
             pointer.GetComponent<Pointer>().pointerIsDragging = false;
