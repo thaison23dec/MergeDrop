@@ -5,7 +5,23 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager instance;
+
     [SerializeField] private Canvas menuCanvas;
+    [SerializeField] private Image nextFruitImage;
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+    }
+
+    private void Start()
+    {
+        ShowNextFruitImage();
+    }
 
     public void OpenMenu()
     {
@@ -19,4 +35,9 @@ public class UIManager : MonoBehaviour
         PauseManager.instance.UnpauseGame();
     }
 
+    public void ShowNextFruitImage()
+    {
+        int id = GamePlayManager.Instance.nextFruitIndex;
+        nextFruitImage.sprite = GamePlayManager.Instance.objectList[id].GetComponent<SpriteRenderer>().sprite;
+    }
 }

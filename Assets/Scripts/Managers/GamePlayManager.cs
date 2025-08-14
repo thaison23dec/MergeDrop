@@ -10,13 +10,15 @@ public class GamePlayManager : MonoBehaviour
     public GameObject pointer;
     public bool canDrag = true;
 
-    [SerializeField] private List<GameObject> objectList;
+    [SerializeField] public List<GameObject> objectList;
     [SerializeField] private GameObject currentFruit;
     [SerializeField] private AudioClip dropSoundClip;
     [SerializeField] private Vector3 spawnTransform;
 
     private BoxCollider2D dragRangeCollider;
     public float dragRange;
+    public int nextFruitIndex = -1;
+    public int currentFruitIndex;
     private Vector3 offSet;
 
 
@@ -30,6 +32,8 @@ public class GamePlayManager : MonoBehaviour
 
         pointer.transform.position = spawnTransform;
         dragRangeCollider = gameObject.GetComponent<BoxCollider2D>();
+        int randomID = Random.Range(0, objectList.Count);
+        nextFruitIndex = randomID;
     }
 
     private void Start()
@@ -71,7 +75,6 @@ public class GamePlayManager : MonoBehaviour
     }
 
 
-
     private void OnMouseDown()
     {
         if (canDrag && !PauseManager.instance.IsPaused)
@@ -107,8 +110,11 @@ public class GamePlayManager : MonoBehaviour
     IEnumerator RandomObject()
     {
         int randomID = Random.Range(0, objectList.Count);
+        currentFruitIndex = nextFruitIndex;
+        nextFruitIndex = randomID;
         yield return new WaitForSeconds(0.75f);
-        currentFruit = Instantiate(objectList[randomID], pointer.transform.position, Quaternion.identity);
+        UIManager.instance.ShowNextFruitImage();
+        currentFruit = Instantiate(objectList[currentFruitIndex], pointer.transform.position, Quaternion.identity);
         currentFruit.GetComponent<CircleCollider2D>().isTrigger = true;
     }
 
