@@ -131,9 +131,11 @@ MonoBehaviour:
   isDragging: 0
   isDraggable: 0
   rb: {fileID: 0}
+  isMergedObject: 1
   mergedObj: {fileID: 4150782879151880632, guid: cdfce08c55d52b6479475f0122de3e83, type: 3}
   mergeSoundClip: {fileID: 8300000, guid: 90a611591af39954590c0dc53f9286a3, type: 3}
   type: 5
+  mergeParticle: {fileID: 925551675092709064, guid: 4e8bf0deb54cf33488d3bb6895939270, type: 3}
 --- !u!58 &3589758785092609605
 CircleCollider2D:
   m_ObjectHideFlags: 0

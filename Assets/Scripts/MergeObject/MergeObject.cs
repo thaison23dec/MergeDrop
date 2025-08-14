@@ -10,15 +10,27 @@ public class MergeObject : MonoBehaviour
     [SerializeField] public bool isDraggable = true;
     public Rigidbody2D rb;
 
+    [SerializeField] private bool isMergedObject;
     [SerializeField] private GameObject mergedObj;
     [SerializeField] private AudioClip mergeSoundClip;
     [SerializeField] public MergeObjectType type;
+    [SerializeField] private ParticleSystem mergeParticle;
 
+    private ParticleSystem mergeParticleInstance;
 
     private void Start()
     {
         ID = GetInstanceID();
         rb = gameObject.GetComponent<Rigidbody2D>();
+        if (isMergedObject)
+        {
+            mergeParticleInstance = Instantiate(mergeParticle, transform.position, Quaternion.identity);
+        }
+
+    }
+
+    private void SpawnMergeParticle(Transform pos)
+    {
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -41,6 +53,7 @@ public class MergeObject : MonoBehaviour
             Instantiate(mergedObj, mergedObjPos, Quaternion.identity);
 
             SoundFXManager.instance.PlaySoundFXClip(mergeSoundClip, mergedObj.transform, 1f);
+ 
 
             hasMerged = true;
             other.hasMerged = true;

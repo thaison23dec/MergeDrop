@@ -134,6 +134,7 @@ MonoBehaviour:
   mergedObj: {fileID: 0}
   mergeSoundClip: {fileID: 8300000, guid: 90a611591af39954590c0dc53f9286a3, type: 3}
   type: 6
+  mergeParticle: {fileID: 2144315928939099216, guid: 9b8d818e8528f3943b6069b4a198628d, type: 3}
 --- !u!70 &2640081230540831607
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
