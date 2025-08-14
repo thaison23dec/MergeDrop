@@ -844,6 +844,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &518034867
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 518034869}
+  - component: {fileID: 518034868}
+  m_Layer: 0
+  m_Name: --SOUNDMIXER_MANAGER--
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &518034868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518034867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22266455d35242d459d5df7299aa28c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 0b2ab2b17b8bf6743aa6210c790a3aa3, type: 2}
+--- !u!4 &518034869
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518034867}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1167,7 +1212,7 @@ MonoBehaviour:
   - {fileID: 5530346077340714798, guid: b15b264a7964e3a4c9a35f9b62259a84, type: 3}
   currentFruit: {fileID: 0}
   dropSoundClip: {fileID: 8300000, guid: 371a9448ad2e09143a9e33e25a0b4f6b, type: 3}
-  spawnTransform: {x: 0, y: 3, z: 0}
+  spawnTransform: {x: 0, y: 3.5, z: 0}
   dragRange: 0
 --- !u!61 &933948890
 BoxCollider2D:
@@ -1299,8 +1344,9 @@ GameObject:
   m_Component:
   - component: {fileID: 962742559}
   - component: {fileID: 962742560}
+  - component: {fileID: 962742561}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: --GAME_MANAGER--
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1331,6 +1377,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a7d7ed9a1b73c8488746255c5aa857c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &962742561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962742558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db0bd9bcabb2916478cd899ffc1bf334, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1074875600
@@ -1723,13 +1781,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 1074875601}
   m_HandleRect: {fileID: 1525180737}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.000001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.000001
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 518034868}
+        m_TargetAssemblyTypeName: SoundMixerManager, Assembly-CSharp
+        m_MethodName: SetMasterVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1156822351
 GameObject:
   m_ObjectHideFlags: 0
@@ -2432,13 +2502,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 1954136712}
   m_HandleRect: {fileID: 19126075}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.000001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.000001
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 518034868}
+        m_TargetAssemblyTypeName: SoundMixerManager, Assembly-CSharp
+        m_MethodName: SetMusicVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1464678839
 GameObject:
   m_ObjectHideFlags: 0
@@ -2449,8 +2531,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1464678841}
   - component: {fileID: 1464678840}
+  - component: {fileID: 1464678842}
   m_Layer: 0
-  m_Name: --SOUNDFX_MANAGER--
+  m_Name: --SOUND_MANAGER--
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2468,7 +2551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69932a2edfbfd7a4382e8018651fde0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sourceFXObject: {fileID: 995435498246860262, guid: 525321f4657d7c746818b628a6f69997, type: 3}
+  soundFXObject: {fileID: 995435498246860262, guid: 525321f4657d7c746818b628a6f69997, type: 3}
 --- !u!4 &1464678841
 Transform:
   m_ObjectHideFlags: 0
@@ -2484,6 +2567,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1464678842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464678839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97dd51ce31ca3bb4db5a67745f8591aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicObject: {fileID: 1984173962738658829, guid: cefbf4ae3aaf1314fa5ef31b7809cc7f, type: 3}
+  musicList:
+  - {fileID: 8300000, guid: 95c7d1b3f4cab1e429a329df91d88678, type: 3}
+  - {fileID: 8300000, guid: 3e7c4fc5072e34342b8be9af84bad419, type: 3}
+  - {fileID: 8300000, guid: 327ab9b5300d1be40ad8a58f4cfd8523, type: 3}
 --- !u!1 &1489195079
 GameObject:
   m_ObjectHideFlags: 0
@@ -3198,13 +3298,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 1575914330}
   m_HandleRect: {fileID: 1853734308}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.000001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.000001
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 518034868}
+        m_TargetAssemblyTypeName: SoundMixerManager, Assembly-CSharp
+        m_MethodName: SetSoundFXVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1954136711
 GameObject:
   m_ObjectHideFlags: 0
@@ -3456,6 +3568,7 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 962742559}
   - {fileID: 933948888}
+  - {fileID: 518034869}
   - {fileID: 1464678841}
   - {fileID: 1776800013}
   - {fileID: 502609294}
