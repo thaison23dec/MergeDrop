@@ -15,8 +15,10 @@ public class MergeObject : MonoBehaviour
     [SerializeField] private AudioClip mergeSoundClip;
     [SerializeField] public MergeObjectType type;
     [SerializeField] private ParticleSystem mergeParticle;
+    [SerializeField] private int mergeScore;
 
     private ParticleSystem mergeParticleInstance;
+    private bool touchedLimitLine = false;
 
     private void Start()
     {
@@ -26,12 +28,17 @@ public class MergeObject : MonoBehaviour
         {
             mergeParticleInstance = Instantiate(mergeParticle, transform.position, Quaternion.identity);
         }
-
     }
 
-    private void SpawnMergeParticle(Transform pos)
+    private void FixedUpdate()
     {
+        if (!isMergedObject && !isDraggable)
+        {
+            StartCoroutine("CheckLimitLine");
+        }
+        
     }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -53,13 +60,71 @@ public class MergeObject : MonoBehaviour
             Instantiate(mergedObj, mergedObjPos, Quaternion.identity);
 
             SoundFXManager.instance.PlaySoundFXClip(mergeSoundClip, mergedObj.transform, 1f);
- 
+
+            ScoreManager.instance.IncreaseScore(mergeScore);
+            UIManager.instance.UpdateScore();
 
             hasMerged = true;
             other.hasMerged = true;
 
             Destroy(gameObject);
             Destroy(collision.gameObject);
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        MergeObject other = collision.gameObject.GetComponent<MergeObject>();
+
+        if (other != null)
+        {
+            if (hasMerged || other.hasMerged) return;
+            if (isDraggable || other.isDraggable) return;
+        }
+
+
+        if (gameObject.CompareTag(collision.gameObject.tag) && type == other.type)
+        {
+            if (ID < other.ID) return;
+
+            Vector2 mergedObjPos = (transform.position + other.transform.position) / 2f;
+            Instantiate(mergedObj, mergedObjPos, Quaternion.identity);
+
+            SoundFXManager.instance.PlaySoundFXClip(mergeSoundClip, mergedObj.transform, 1f);
+
+            ScoreManager.instance.IncreaseScore(mergeScore);
+            UIManager.instance.UpdateScore();
+
+            hasMerged = true;
+            other.hasMerged = true;
+
+            Destroy(gameObject);
+            Destroy(collision.gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("LimitLine"))
+        {
+            touchedLimitLine = true;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("LimitLine"))
+        {
+            touchedLimitLine = true;
+        }
+    }
+
+    private IEnumerator CheckLimitLine()
+    {
+        yield return new WaitForSeconds(2f);
+        if (!touchedLimitLine)
+        {
+            GamePlayManager.Instance.GameOver();
         }
     }
 }

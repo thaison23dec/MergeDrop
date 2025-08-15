@@ -29,6 +29,7 @@ public class MusicManager : MonoBehaviour
         }
     }
 
+
     public void PlayRandomMusicClip()
     {
         int rand = Random.Range(0, musicList.Length);

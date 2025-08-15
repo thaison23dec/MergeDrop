@@ -171,3 +171,4 @@ MonoBehaviour:
   mergeSoundClip: {fileID: 8300000, guid: 90a611591af39954590c0dc53f9286a3, type: 3}
   type: 4
   mergeParticle: {fileID: 549145233853534141, guid: c385e7851f8469a46a392d71b5efd71d, type: 3}
+  mergeScore: 50

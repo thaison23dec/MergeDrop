@@ -2,13 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
-    [SerializeField] private Canvas menuCanvas;
+    [SerializeField] private GameObject optionPanel;
+    [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private GameObject background;
     [SerializeField] private Image nextFruitImage;
+    [SerializeField] private TMP_Text scoreText;
 
     private void Awake()
     {
@@ -25,14 +29,28 @@ public class UIManager : MonoBehaviour
 
     public void OpenMenu()
     {
-        menuCanvas.gameObject.SetActive(true);
+        optionPanel.gameObject.SetActive(true);
+        background.gameObject.SetActive(true);
         PauseManager.instance.PauseGame();
     }
 
     public void CloseMenu()
     {
-        menuCanvas.gameObject.SetActive(false);
+        optionPanel.gameObject.SetActive(false);
+        background.gameObject.SetActive(false);
         PauseManager.instance.UnpauseGame();
+    }
+
+    public void OpenGameOverPanel()
+    {
+        gameOverPanel.gameObject.SetActive(true);
+        background.gameObject.SetActive(true);
+        PauseManager.instance.PauseGame();
+    }
+
+    public void UpdateScore()
+    {
+        scoreText.text = ScoreManager.instance.currentScore.ToString();
     }
 
     public void ShowNextFruitImage()
