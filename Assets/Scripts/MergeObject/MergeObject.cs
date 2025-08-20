@@ -31,7 +31,10 @@ public class MergeObject : MonoBehaviour
     {
         ID = GetInstanceID();
         isDropped = false;
-        FruitHolder.instance.AddFruit(gameObject);
+        if (!isDraggable)
+        {
+            FruitHolder.instance.AddFruit(gameObject);
+        }
     }
 
 

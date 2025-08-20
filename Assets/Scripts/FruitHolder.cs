@@ -6,7 +6,7 @@ public class FruitHolder : MonoBehaviour
 {
     public static FruitHolder instance;
 
-    [SerializeField] private List<GameObject> fruits = new List<GameObject>();
+    [SerializeField] public List<GameObject> fruits = new List<GameObject>();
 
 
     private void Awake()
@@ -42,56 +42,4 @@ public class FruitHolder : MonoBehaviour
         fruits.Sort((a, b) => b.transform.position.y.CompareTo(a.transform.position.y));
     }
 
-    public void Save(ref SceneFruitData data)
-    {
-        List<FruitSaveData> fruitSaveDataList = new List<FruitSaveData>();
-
-        for(int i = fruits.Count - 1; i >= 1; i--)
-        {
-            GameObject fruit = fruits[i];
-            FruitSaveData saveData = new FruitSaveData
-            {
-                Position = fruit.transform.position,
-                Rotation = fruit.transform.rotation,
-                PrefabId = fruit.GetComponent<MergeObject>().prefabID
-            };
-
-            fruitSaveDataList.Add(saveData);
-        }
-
-        data.Fruits = fruitSaveDataList.ToArray();
-    }
-
-    public void Load(SceneFruitData data)
-    {
-        foreach(var fruit in fruits)
-        {
-            if (fruit != null) Destroy(fruit);
-        }
-
-        fruits.Clear();
-
-        foreach(var fruitData in data.Fruits)
-        {
-            GameObject prefab = GamePlayManager.Instance.objectList[fruitData.PrefabId];
-            GameObject fruit = Instantiate(prefab, fruitData.Position, fruitData.Rotation);
-            fruits.Add(fruit);
-        }
-    }
-
-}
-
-[System.Serializable]
-
-public struct SceneFruitData
-{
-    public FruitSaveData[] Fruits;
-}
-
-[System.Serializable]
-public struct FruitSaveData
-{
-    public Vector3 Position;
-    public Quaternion Rotation;
-    public int PrefabId;
 }

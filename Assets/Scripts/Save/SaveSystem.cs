@@ -31,7 +31,7 @@ public class SaveSystem
     private static void HandleSaveData()
     {
         ScoreManager.instance.Save(ref _saveData.scoreData);
-        FruitHolder.instance.Save(ref _saveData.fruitData);
+        FruitManager.instance.Save(ref _saveData.fruitData);
     }
 
     public static void Load()
@@ -44,7 +44,7 @@ public class SaveSystem
     private static void HandleLoadData()
     {
         ScoreManager.instance.Load(_saveData.scoreData);
-        FruitHolder.instance.Load(_saveData.fruitData);
+        FruitManager.instance.Load(_saveData.fruitData);
     }
 }
 

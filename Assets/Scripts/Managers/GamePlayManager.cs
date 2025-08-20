@@ -119,6 +119,7 @@ public class GamePlayManager : MonoBehaviour
             currentFruit.GetComponent<MergeObject>().CheckLimitLine();
             currentFruit.GetComponent<CircleCollider2D>().isTrigger = false;
             currentFruit.GetComponent<MergeObject>().rb.bodyType = RigidbodyType2D.Dynamic;
+            FruitHolder.instance.AddFruit(currentFruit);
             StartCoroutine("OnOffPointer");
             SpawnObject();
         }
