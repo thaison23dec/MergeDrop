@@ -78,12 +78,11 @@ public class GamePlayManager : MonoBehaviour
         canDrag = false;
         limitLine.gameObject.GetComponent<LimitLine>().TurnRed();
         UIManager.instance.OpenGameOverPanel();
-
     }
 
     private void SpawnFirstObject()
     {
-        int randomID = Random.Range(0, objectList.Count);
+        int randomID = Random.Range(0, 4);
         nextFruitIndex = randomID;
         UIManager.instance.ShowNextFruitImage();
         currentFruit = Instantiate(objectList[currentFruitIndex], pointer.transform.position, Quaternion.identity);
@@ -116,6 +115,8 @@ public class GamePlayManager : MonoBehaviour
             pointer.GetComponent<Pointer>().pointerIsDragging = false;
             currentFruit.GetComponent<MergeObject>().isDragging = false;
             currentFruit.GetComponent<MergeObject>().isDraggable = false;
+            currentFruit.GetComponent<MergeObject>().isDropped = true;
+            currentFruit.GetComponent<MergeObject>().CheckLimitLine();
             currentFruit.GetComponent<CircleCollider2D>().isTrigger = false;
             currentFruit.GetComponent<MergeObject>().rb.bodyType = RigidbodyType2D.Dynamic;
             StartCoroutine("OnOffPointer");
@@ -124,7 +125,7 @@ public class GamePlayManager : MonoBehaviour
     }
     IEnumerator RandomObject()
     {
-        int randomID = Random.Range(0, objectList.Count);
+        int randomID = Random.Range(0, 4);
         currentFruitIndex = nextFruitIndex;
         nextFruitIndex = randomID;
         yield return new WaitForSeconds(0.75f);

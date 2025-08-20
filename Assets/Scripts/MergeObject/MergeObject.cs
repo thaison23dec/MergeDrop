@@ -7,12 +7,13 @@ public class MergeObject : MonoBehaviour
     public int ID;
     public bool hasMerged = false;
     public bool isDragging = false;
+    public bool isDropped;
     [SerializeField] public bool isDraggable = true;
     public Rigidbody2D rb;
 
-    [SerializeField] private bool isMergedObject;
     [SerializeField] private GameObject mergedObj;
     [SerializeField] private AudioClip mergeSoundClip;
+    [SerializeField] public int prefabID;
     [SerializeField] public MergeObjectType type;
     [SerializeField] private ParticleSystem mergeParticle;
     [SerializeField] private int mergeScore;
@@ -20,25 +21,24 @@ public class MergeObject : MonoBehaviour
     private ParticleSystem mergeParticleInstance;
     private bool touchedLimitLine = false;
 
-    private void Start()
+    private void Awake()
     {
-        ID = GetInstanceID();
         rb = gameObject.GetComponent<Rigidbody2D>();
-        if (isMergedObject)
-        {
-            mergeParticleInstance = Instantiate(mergeParticle, transform.position, Quaternion.identity);
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        if (!isMergedObject && !isDraggable)
-        {
-            StartCoroutine("CheckLimitLine");
-        }
         
     }
 
+    private void Start()
+    {
+        ID = GetInstanceID();
+        isDropped = false;
+        FruitHolder.instance.AddFruit(gameObject);
+    }
+
+
+    public void ParticleMergeFruit()
+    {
+        mergeParticleInstance = Instantiate(mergeParticle, transform.position, Quaternion.identity);
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -57,7 +57,12 @@ public class MergeObject : MonoBehaviour
             if (ID < other.ID) return;
 
             Vector2 mergedObjPos = (transform.position + other.transform.position) / 2f;
-            Instantiate(mergedObj, mergedObjPos, Quaternion.identity);
+            GameObject newFruit =  Instantiate(mergedObj, mergedObjPos, Quaternion.identity);
+
+            newFruit.GetComponent<MergeObject>().ParticleMergeFruit();
+            newFruit.GetComponent<MergeObject>().isDropped = true;
+            newFruit.GetComponent<MergeObject>().isDraggable = false;
+            newFruit.GetComponent<MergeObject>().rb.bodyType = RigidbodyType2D.Dynamic;
 
             SoundFXManager.instance.PlaySoundFXClip(mergeSoundClip, mergedObj.transform, 1f);
 
@@ -88,7 +93,13 @@ public class MergeObject : MonoBehaviour
             if (ID < other.ID) return;
 
             Vector2 mergedObjPos = (transform.position + other.transform.position) / 2f;
-            Instantiate(mergedObj, mergedObjPos, Quaternion.identity);
+            GameObject newFruit = Instantiate(mergedObj, mergedObjPos, Quaternion.identity);
+
+            newFruit.GetComponent<MergeObject>().ParticleMergeFruit();
+            newFruit.GetComponent<MergeObject>().isDropped = true;
+            newFruit.GetComponent<MergeObject>().isDraggable = false;
+            newFruit.GetComponent<MergeObject>().isDraggable = false;
+            newFruit.GetComponent<MergeObject>().rb.bodyType = RigidbodyType2D.Dynamic;
 
             SoundFXManager.instance.PlaySoundFXClip(mergeSoundClip, mergedObj.transform, 1f);
 
@@ -119,7 +130,20 @@ public class MergeObject : MonoBehaviour
         }
     }
 
-    private IEnumerator CheckLimitLine()
+    private void OnDestroy()
+    {
+        if (FruitHolder.instance != null)
+        {
+            FruitHolder.instance.RemoveFruit(this.gameObject);
+        }
+    }
+
+    public void CheckLimitLine()
+    {
+        StartCoroutine("CheckLimitLineCoroutine");
+    }
+
+    private IEnumerator CheckLimitLineCoroutine()
     {
         yield return new WaitForSeconds(2f);
         if (!touchedLimitLine)

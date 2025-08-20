@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e2b4825cf037146bd2fabc3bc27dfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 10
   hasMerged: 0
   isDragging: 0
   isDraggable: 0
@@ -169,6 +169,7 @@ MonoBehaviour:
   isMergedObject: 1
   mergedObj: {fileID: 3413799510430820609, guid: b9085d2ab45f2a74eb633d8c3b21338f, type: 3}
   mergeSoundClip: {fileID: 8300000, guid: 90a611591af39954590c0dc53f9286a3, type: 3}
+  prefabID: 0
   type: 3
   mergeParticle: {fileID: 6251767519859101717, guid: 69c5074167347cb48a4aa77ce0f7d175, type: 3}
   mergeScore: 40

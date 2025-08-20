@@ -20,4 +20,22 @@ public class ScoreManager : MonoBehaviour
         currentScore += score;
     }
 
+
+    public void Save(ref ScoreSaveData data)
+    {
+        data.score = currentScore;
+    }
+
+    public void Load(ScoreSaveData data)
+    {
+        currentScore = data.score;
+    }
+
+}
+
+[System.Serializable]
+
+public struct ScoreSaveData
+{
+    public int score;
 }

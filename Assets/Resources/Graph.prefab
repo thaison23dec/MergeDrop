@@ -126,16 +126,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e2b4825cf037146bd2fabc3bc27dfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 1
   hasMerged: 0
   isDragging: 0
+  isDropped: 0
   isDraggable: 1
   rb: {fileID: 0}
-  isMergedObject: 0
-  mergedObj: {fileID: 2046823097274017174, guid: 975786819258b6a409a11c820707f319, type: 3}
+  mergedObj: {fileID: 4627995942300512991, guid: 18cd8fdf9e5a79847a4ae95be8958d08, type: 3}
   mergeSoundClip: {fileID: 8300000, guid: 90a611591af39954590c0dc53f9286a3, type: 3}
+  prefabID: 0
   type: 1
-  mergeParticle: {fileID: 2144315928939099216, guid: 9b8d818e8528f3943b6069b4a198628d, type: 3}
+  mergeParticle: {fileID: 2884105005289410349, guid: 8652f77a11bab9c4bb5348be70a426fb, type: 3}
   mergeScore: 20
 --- !u!58 &5022251799015027674
 CircleCollider2D:
