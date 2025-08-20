@@ -1735,20 +1735,13 @@ MonoBehaviour:
   pointer: {fileID: 1714651644}
   canDrag: 1
   objectList:
-  - {fileID: 1923077457961493868, guid: bc014b4fd818a804bab692981972f14b, type: 3}
+  - {fileID: 5530346077340714798, guid: b15b264a7964e3a4c9a35f9b62259a84, type: 3}
   - {fileID: 4719720766532451539, guid: efa0e314c242b3b48b654ceeb82f7f77, type: 3}
   - {fileID: 4627995942300512991, guid: 18cd8fdf9e5a79847a4ae95be8958d08, type: 3}
   - {fileID: 3244834271136380167, guid: e39a8444c1f9c9e4da6c8fca2c85fb24, type: 3}
-  - {fileID: 5530346077340714798, guid: b15b264a7964e3a4c9a35f9b62259a84, type: 3}
+  - {fileID: 1923077457961493868, guid: bc014b4fd818a804bab692981972f14b, type: 3}
   - {fileID: 1478822294207447743, guid: 584f6e20b00198f4bb88fb08812fd16c, type: 3}
   - {fileID: 3039703809718089248, guid: e35b956303e821d478d9d87bbe058531, type: 3}
-  - {fileID: 3413799510430820609, guid: b9085d2ab45f2a74eb633d8c3b21338f, type: 3}
-  - {fileID: 3100878430261488177, guid: 8b867b7e8c3ee0e4d9f17fb999a90946, type: 3}
-  - {fileID: 2046823097274017174, guid: 975786819258b6a409a11c820707f319, type: 3}
-  - {fileID: 3557757680569703864, guid: a3bea2a56584f3a418fb4a1b348b1546, type: 3}
-  - {fileID: 4150782879151880632, guid: cdfce08c55d52b6479475f0122de3e83, type: 3}
-  - {fileID: 7678482571310398301, guid: 81d918a0b2b54f4438cad34701524b1c, type: 3}
-  - {fileID: 7500353329253858539, guid: bdfee7f695bed444bb30405daeea3f01, type: 3}
   currentFruit: {fileID: 0}
   dropSoundClip: {fileID: 8300000, guid: 371a9448ad2e09143a9e33e25a0b4f6b, type: 3}
   spawnTransform: {x: 0, y: 3.5, z: 0}

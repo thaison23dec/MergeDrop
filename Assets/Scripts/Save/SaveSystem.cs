@@ -44,6 +44,7 @@ public class SaveSystem
     private static void HandleLoadData()
     {
         ScoreManager.instance.Load(_saveData.scoreData);
+        FruitHolder.instance.Load(_saveData.fruitData);
     }
 }
 

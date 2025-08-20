@@ -46,13 +46,14 @@ public class FruitHolder : MonoBehaviour
     {
         List<FruitSaveData> fruitSaveDataList = new List<FruitSaveData>();
 
-        for(int i = fruits.Count - 1; i >= 0; i--)
+        for(int i = fruits.Count - 1; i >= 1; i--)
         {
             GameObject fruit = fruits[i];
             FruitSaveData saveData = new FruitSaveData
             {
                 Position = fruit.transform.position,
-                PrefabId = GamePlayManager.Instance.objectList.IndexOf(fruit.gameObject)
+                Rotation = fruit.transform.rotation,
+                PrefabId = fruit.GetComponent<MergeObject>().prefabID
             };
 
             fruitSaveDataList.Add(saveData);
@@ -73,7 +74,7 @@ public class FruitHolder : MonoBehaviour
         foreach(var fruitData in data.Fruits)
         {
             GameObject prefab = GamePlayManager.Instance.objectList[fruitData.PrefabId];
-            GameObject fruit = Instantiate(prefab, fruitData.Position, Quaternion.identity);
+            GameObject fruit = Instantiate(prefab, fruitData.Position, fruitData.Rotation);
             fruits.Add(fruit);
         }
     }
@@ -91,5 +92,6 @@ public struct SceneFruitData
 public struct FruitSaveData
 {
     public Vector3 Position;
+    public Quaternion Rotation;
     public int PrefabId;
 }

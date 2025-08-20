@@ -169,7 +169,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   mergedObj: {fileID: 1923077457961493868, guid: bc014b4fd818a804bab692981972f14b, type: 3}
   mergeSoundClip: {fileID: 8300000, guid: 90a611591af39954590c0dc53f9286a3, type: 3}
-  prefabID: 0
+  prefabID: 3
   type: 3
   mergeParticle: {fileID: 6251767519859101717, guid: 69c5074167347cb48a4aa77ce0f7d175, type: 3}
   mergeScore: 40

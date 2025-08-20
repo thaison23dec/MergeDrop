@@ -134,7 +134,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   mergedObj: {fileID: 4627995942300512991, guid: 18cd8fdf9e5a79847a4ae95be8958d08, type: 3}
   mergeSoundClip: {fileID: 8300000, guid: 90a611591af39954590c0dc53f9286a3, type: 3}
-  prefabID: 0
+  prefabID: 1
   type: 1
   mergeParticle: {fileID: 2884105005289410349, guid: 8652f77a11bab9c4bb5348be70a426fb, type: 3}
   mergeScore: 20
