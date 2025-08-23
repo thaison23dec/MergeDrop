@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2781199148294052247}
   - component: {fileID: 6643963471374860451}
   - component: {fileID: 934687190140943546}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Mango
   m_TagString: MergeObject
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.87, y: -4.23, z: 0}
-  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 1153551062, guid: 1f1de7445e068f74c89d90ab701e43bb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -132,7 +132,7 @@ MonoBehaviour:
   isDropped: 0
   isDraggable: 1
   rb: {fileID: 0}
-  mergedObj: {fileID: 3244834271136380167, guid: e39a8444c1f9c9e4da6c8fca2c85fb24, type: 3}
+  mergedObj: {fileID: 1923077457961493868, guid: bc014b4fd818a804bab692981972f14b, type: 3}
   mergeSoundClip: {fileID: 8300000, guid: 90a611591af39954590c0dc53f9286a3, type: 3}
   prefabID: 2
   type: 2

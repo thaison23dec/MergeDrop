@@ -16,7 +16,7 @@ public class GamePlayManager : MonoBehaviour
     [SerializeField] private Vector3 spawnTransform;
     [SerializeField] private GameObject limitLine;
 
-    private BoxCollider2D dragRangeCollider;
+    [SerializeField]  private BoxCollider2D dragRangeCollider;
     public float dragRange;
     public int nextFruitIndex = -1;
     public int currentFruitIndex;
@@ -32,7 +32,6 @@ public class GamePlayManager : MonoBehaviour
         }
 
         pointer.transform.position = spawnTransform;
-        dragRangeCollider = gameObject.GetComponent<BoxCollider2D>();
     }
 
     private void Start()
@@ -48,13 +47,13 @@ public class GamePlayManager : MonoBehaviour
             pointer.transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x + offSet.x, pointer.transform.position.y, pointer.transform.position.z);
             if (currentFruit != null)
             {
-                if (pointer.transform.position.x >= dragRange / 2 - currentFruit.GetComponent<CircleCollider2D>().radius - 0.75f)
+                if (pointer.transform.position.x >= dragRange / 2 - currentFruit.GetComponent<CircleCollider2D>().radius)
                 {
-                    pointer.transform.position = new Vector3(dragRange / 2 - currentFruit.GetComponent<CircleCollider2D>().radius - 0.75f, pointer.transform.position.y, pointer.transform.position.z);
+                    pointer.transform.position = new Vector3(dragRange / 2 - currentFruit.GetComponent<CircleCollider2D>().radius, pointer.transform.position.y, pointer.transform.position.z);
                 }
-                if (pointer.transform.position.x <= -dragRange / 2 + currentFruit.GetComponent<CircleCollider2D>().radius + 0.75f)
+                if (pointer.transform.position.x <= -dragRange / 2 + currentFruit.GetComponent<CircleCollider2D>().radius)
                 {
-                    pointer.transform.position = new Vector3(-dragRange / 2 + currentFruit.GetComponent<CircleCollider2D>().radius + 0.75f, pointer.transform.position.y, pointer.transform.position.z);
+                    pointer.transform.position = new Vector3(-dragRange / 2 + currentFruit.GetComponent<CircleCollider2D>().radius, pointer.transform.position.y, pointer.transform.position.z);
                 }
             }
         }

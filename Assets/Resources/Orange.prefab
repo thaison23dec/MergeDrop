@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2929103342680960443}
   - component: {fileID: 8421917890264685608}
   - component: {fileID: 3069449730657666329}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Orange
   m_TagString: MergeObject
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -1541055813, guid: 1f1de7445e068f74c89d90ab701e43bb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -167,9 +167,9 @@ MonoBehaviour:
   isDropped: 0
   isDraggable: 1
   rb: {fileID: 0}
-  mergedObj: {fileID: 1923077457961493868, guid: bc014b4fd818a804bab692981972f14b, type: 3}
+  mergedObj: {fileID: 1478822294207447743, guid: 584f6e20b00198f4bb88fb08812fd16c, type: 3}
   mergeSoundClip: {fileID: 8300000, guid: 90a611591af39954590c0dc53f9286a3, type: 3}
   prefabID: 3
   type: 3
   mergeParticle: {fileID: 6251767519859101717, guid: 69c5074167347cb48a4aa77ce0f7d175, type: 3}
-  mergeScore: 40
+  mergeScore: 50

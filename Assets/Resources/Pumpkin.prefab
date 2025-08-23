@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7055128184469507923}
   - component: {fileID: 8561191736573761575}
   - component: {fileID: 2640081230540831607}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Pumpkin
   m_TagString: MergeObject
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 85681622, guid: 774595944a95d7348aeab6565b1b3153, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

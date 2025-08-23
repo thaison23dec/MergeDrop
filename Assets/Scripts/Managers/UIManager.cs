@@ -48,6 +48,11 @@ public class UIManager : MonoBehaviour
         PauseManager.instance.PauseGame();
     }
 
+    public void Restart()
+    {
+        Loader.Load(Loader.Scene.InGame);
+    }
+
     public void UpdateScore()
     {
         scoreText.text = ScoreManager.instance.currentScore.ToString();
