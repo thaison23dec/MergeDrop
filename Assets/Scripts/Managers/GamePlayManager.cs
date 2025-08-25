@@ -31,11 +31,21 @@ public class GamePlayManager : MonoBehaviour
             Instance = this;
         }
 
+
         pointer.transform.position = spawnTransform;
     }
 
     private void Start()
     {
+        if (GameManager.instance.currentGameState == GameManager.GameState.Continue)
+        {
+            SaveSystem.Load();
+        }
+        if (GameManager.instance.currentGameState == GameManager.GameState.NewGame)
+        {
+            SaveSystem.ClearData();
+        }
+        UIManager.instance.UpdateScore();
         SpawnFirstObject();
         dragRange = dragRangeCollider.size.x;
     }
@@ -65,6 +75,10 @@ public class GamePlayManager : MonoBehaviour
                 currentFruit.transform.position = pointer.transform.position;
             }
         }
+        if(GameManager.instance.currentGameState == GameManager.GameState.GameOver)
+        {
+            GameOver();
+        }
     }
 
     public void SpawnObject()
@@ -76,6 +90,8 @@ public class GamePlayManager : MonoBehaviour
     {
         canDrag = false;
         limitLine.gameObject.GetComponent<LimitLine>().TurnRed();
+        GameManager.instance.currentGameState = GameManager.GameState.GameOver;
+        SaveSystem.ClearData();
         UIManager.instance.OpenGameOverPanel();
     }
 
@@ -119,7 +135,7 @@ public class GamePlayManager : MonoBehaviour
             currentFruit.GetComponent<CircleCollider2D>().isTrigger = false;
             currentFruit.GetComponent<MergeObject>().rb.bodyType = RigidbodyType2D.Dynamic;
             FruitHolder.instance.AddFruit(currentFruit);
-            StartCoroutine("OnOffPointer");
+            StartCoroutine(OnOffPointer());
             SpawnObject();
         }
     }
@@ -138,10 +154,12 @@ public class GamePlayManager : MonoBehaviour
     {
         canDrag = false;
         pointer.gameObject.SetActive(false);
+        Debug.Log("Pointer OFF");
+        Debug.Log(Time.timeScale);
         yield return new WaitForSeconds(0.75f);
+        Debug.Log("Pointer ON");
         pointer.gameObject.SetActive(true);
         canDrag = true;
-        
     }
 
 }

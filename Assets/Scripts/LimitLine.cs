@@ -7,7 +7,7 @@ public class LimitLine : MonoBehaviour
 
     private void Start()
     {
-        gameObject.GetComponent<SpriteRenderer>().color = Color.gray;
+        
     }
 
     public void TurnRed()

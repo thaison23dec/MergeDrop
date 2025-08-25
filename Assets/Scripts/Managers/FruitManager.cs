@@ -15,23 +15,27 @@ public class FruitManager : MonoBehaviour
     }
 
     public void Save(ref SceneFruitData data)
+    {
+        if (GameManager.instance.currentGameState == GameManager.GameState.GameOver) return;
+        if(this.gameObject != null)
         {
-        List<FruitSaveData> fruitSaveDataList = new List<FruitSaveData>();
+            List<FruitSaveData> fruitSaveDataList = new List<FruitSaveData>();
 
-        for(int i = FruitHolder.instance.fruits.Count - 1; i >= 0; i--)
-        {
-            GameObject fruit = FruitHolder.instance.fruits[i];
-            FruitSaveData saveData = new FruitSaveData
+            for(int i = FruitHolder.instance.fruits.Count - 1; i >= 0; i--)
             {
-                Position = fruit.transform.position,
-                Rotation = fruit.transform.rotation,
-                PrefabId = fruit.GetComponent<MergeObject>().prefabID
-            };
+                GameObject fruit = FruitHolder.instance.fruits[i];
+                FruitSaveData saveData = new FruitSaveData
+                {
+                    Position = fruit.transform.position,
+                    Rotation = fruit.transform.rotation,
+                    PrefabId = fruit.GetComponent<MergeObject>().prefabID
+                };
 
-            fruitSaveDataList.Add(saveData);
+                fruitSaveDataList.Add(saveData);
+            }
+
+            data.Fruits = fruitSaveDataList.ToArray();
         }
-
-        data.Fruits = fruitSaveDataList.ToArray();
     }
 
     public void Load(SceneFruitData data)
@@ -54,7 +58,12 @@ public class FruitManager : MonoBehaviour
         }
     }
 
+    public void ClearData(ref SceneFruitData data)
+    {
+        data.Fruits = System.Array.Empty<FruitSaveData>();
+    }
 }
+
 
 [System.Serializable]
 

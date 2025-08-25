@@ -121,7 +121,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.55
+  m_Radius: 0.52
 --- !u!50 &8421917890264685608
 Rigidbody2D:
   serializedVersion: 4
@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e2b4825cf037146bd2fabc3bc27dfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 3
+  ID: 4
   hasMerged: 0
   isDragging: 0
   isDropped: 0
@@ -169,7 +169,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   mergedObj: {fileID: 1478822294207447743, guid: 584f6e20b00198f4bb88fb08812fd16c, type: 3}
   mergeSoundClip: {fileID: 8300000, guid: 90a611591af39954590c0dc53f9286a3, type: 3}
-  prefabID: 3
+  prefabID: 4
   type: 3
   mergeParticle: {fileID: 6251767519859101717, guid: 69c5074167347cb48a4aa77ce0f7d175, type: 3}
   mergeScore: 50

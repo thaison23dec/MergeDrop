@@ -27,6 +27,12 @@ public class SaveSystem
 
         File.WriteAllText(SaveFileName(), JsonUtility.ToJson(_saveData, true));
     }
+    public static void Load()
+    {
+        string saveContent = File.ReadAllText(SaveFileName());
+        _saveData = JsonUtility.FromJson<SaveData>(saveContent);
+        HandleLoadData();
+    }
 
     private static void HandleSaveData()
     {
@@ -34,11 +40,11 @@ public class SaveSystem
         FruitManager.instance.Save(ref _saveData.fruitData);
     }
 
-    public static void Load()
+    public static void ClearData()
     {
-        string saveContent = File.ReadAllText(SaveFileName());
-        _saveData = JsonUtility.FromJson<SaveData>(saveContent);
-        HandleLoadData();
+        ScoreManager.instance.ClearData(ref _saveData.scoreData);
+        FruitManager.instance.ClearData(ref _saveData.fruitData);
+        Save();
     }
 
     private static void HandleLoadData()

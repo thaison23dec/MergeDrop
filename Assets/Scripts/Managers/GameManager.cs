@@ -6,11 +6,25 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+
+    public enum GameState
+    {
+        NewGame,
+        Continue,
+        GameOver
+    }
+
+    public GameState currentGameState;
+
     private void Awake()
     {
-        if(instance == null)
+        if(instance != null && instance != this )
+        {
+            Destroy(gameObject);
+        } else
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         Debug.Log(Application.persistentDataPath);
 
@@ -26,6 +40,15 @@ public class GameManager : MonoBehaviour
         {
             SaveSystem.Load();
         }
+        if (Input.GetKey(KeyCode.G))
+        {
+            GamePlayManager.Instance.GameOver();
+        }
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveSystem.Save();
     }
 
     public ScoreManager ScoreManager { get; set; }

@@ -9,7 +9,8 @@ public static class Loader
     public enum Scene
     {
         InGame,
-        Loading
+        Loading,
+        MainMenu
     }
 
     private static Action onLoaderCallback;
@@ -21,6 +22,7 @@ public static class Loader
             SceneManager.LoadScene(scene.ToString());
         };
         SceneManager.LoadScene(Scene.Loading.ToString());
+        Time.timeScale = 1f;
     }
 
     public static void LoaderCallback()

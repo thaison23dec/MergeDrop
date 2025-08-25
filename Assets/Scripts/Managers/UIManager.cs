@@ -45,12 +45,32 @@ public class UIManager : MonoBehaviour
     {
         gameOverPanel.gameObject.SetActive(true);
         background.gameObject.SetActive(true);
+
         PauseManager.instance.PauseGame();
     }
 
     public void Restart()
     {
         Loader.Load(Loader.Scene.InGame);
+        GameManager.instance.currentGameState = GameManager.GameState.NewGame;
+    }
+
+    public void ContinueLastSavedGame()
+    {
+        if(GameManager.instance.currentGameState == GameManager.GameState.GameOver)
+        {
+            Restart();
+        } else
+        {
+            Loader.Load(Loader.Scene.InGame);
+            GameManager.instance.currentGameState = GameManager.GameState.Continue;
+        }
+    }
+
+    public void LoadMainMenuScene()
+    {
+        SaveSystem.Save();
+        Loader.Load(Loader.Scene.MainMenu);
     }
 
     public void UpdateScore()

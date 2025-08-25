@@ -31,6 +31,11 @@ public class ScoreManager : MonoBehaviour
         currentScore = data.score;
     }
 
+    public void ClearData(ref ScoreSaveData data)
+    {
+        data.score = 0;
+    }
+
 }
 
 [System.Serializable]
