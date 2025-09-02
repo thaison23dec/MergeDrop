@@ -17,6 +17,7 @@ public class GamePlayManager : MonoBehaviour
     [SerializeField] private GameObject limitLine;
 
     [SerializeField]  private BoxCollider2D dragRangeCollider;
+    public BoxCollider2D pointerDragRangeCollider;
     public float dragRange;
     public int nextFruitIndex = -1;
     public int currentFruitIndex;
@@ -33,6 +34,7 @@ public class GamePlayManager : MonoBehaviour
 
 
         pointer.transform.position = spawnTransform;
+        pointerDragRangeCollider = gameObject.GetComponent<BoxCollider2D>();
     }
 
     private void Start()
@@ -81,6 +83,16 @@ public class GamePlayManager : MonoBehaviour
         }
     }
 
+    public void InActivatePointerDragRangeCollider()
+    {
+        pointerDragRangeCollider.enabled = false;
+    }
+
+    public void ActivatePointerDragRangeCollider()
+    {
+        pointerDragRangeCollider.enabled = true;
+    }
+
     public void SpawnObject()
     {
         StartCoroutine("RandomObject");
@@ -106,7 +118,7 @@ public class GamePlayManager : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (canDrag && !PauseManager.instance.IsPaused)
+        if (canDrag && !PauseManager.instance.IsPaused && UIManager.instance.isOpeningPanel == false)
         {
             pointer.GetComponent<Pointer>().pointerIsDragging = true;
             pointer.transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, pointer.transform.position.y, pointer.transform.position.z);
@@ -154,10 +166,7 @@ public class GamePlayManager : MonoBehaviour
     {
         canDrag = false;
         pointer.gameObject.SetActive(false);
-        Debug.Log("Pointer OFF");
-        Debug.Log(Time.timeScale);
         yield return new WaitForSeconds(0.75f);
-        Debug.Log("Pointer ON");
         pointer.gameObject.SetActive(true);
         canDrag = true;
     }

@@ -44,6 +44,10 @@ public class GameManager : MonoBehaviour
         {
             GamePlayManager.Instance.GameOver();
         }
+        if (Input.GetKey(KeyCode.D))
+        {
+            ItemManager.instance.DestroyChosenFruit();
+        }
     }
 
     private void OnApplicationQuit()

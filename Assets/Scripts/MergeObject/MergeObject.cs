@@ -43,6 +43,19 @@ public class MergeObject : MonoBehaviour
         mergeParticleInstance = Instantiate(mergeParticle, transform.position, Quaternion.identity);
     }
 
+    private void OnMouseDown()
+    {
+        Debug.Log("Clicked: " + gameObject.name);
+        if (ItemManager.instance.isChoosingFruitToDestroy == true)
+        {
+            Destroy(gameObject);
+            ParticleMergeFruit();
+            ItemManager.instance.EndDestroyChosenFruit();
+        }
+        GamePlayManager.Instance.ActivatePointerDragRangeCollider();
+    }
+
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
     

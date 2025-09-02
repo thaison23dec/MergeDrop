@@ -11,8 +11,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject optionPanel;
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject background;
+    [SerializeField] private GameObject item1Panel;
+    [SerializeField] private GameObject item2Panel;
     [SerializeField] private Image nextFruitImage;
     [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private TMP_Text popUpText;
+
+    public bool isOpeningPanel = false;
 
     private void Awake()
     {
@@ -29,16 +34,57 @@ public class UIManager : MonoBehaviour
 
     public void OpenMenu()
     {
+        isOpeningPanel = true;
         optionPanel.gameObject.SetActive(true);
         background.gameObject.SetActive(true);
-        PauseManager.instance.PauseGame();
+        GamePlayManager.Instance.canDrag = false;
+        //PauseManager.instance.PauseGame();
     }
 
     public void CloseMenu()
     {
+        isOpeningPanel = false;
         optionPanel.gameObject.SetActive(false);
         background.gameObject.SetActive(false);
-        PauseManager.instance.UnpauseGame();
+        GamePlayManager.Instance.canDrag = true;
+        //PauseManager.instance.UnpauseGame();
+    }
+
+    public void OpenItemPanel(GameObject itemPanel)
+    {
+        isOpeningPanel = true;
+        itemPanel.gameObject.SetActive(true);
+        background.gameObject.SetActive(true);
+        GamePlayManager.Instance.canDrag = false;
+    }
+
+    public void CloseItemPanel(GameObject itemPanel)
+    {
+        isOpeningPanel = false;
+        itemPanel.gameObject.SetActive(false);
+        background.gameObject.SetActive(false);
+        GamePlayManager.Instance.canDrag = true;
+        if (popUpText.isActiveAndEnabled)
+        {
+            CloseTextPopUp();
+        }
+    }
+
+    public void CloseItem2Panel(GameObject itemPanel)
+    {
+        itemPanel.gameObject.SetActive(false);
+        background.gameObject.SetActive(false);
+        GamePlayManager.Instance.canDrag = true;
+    }
+
+    public void OpenTextPopUp()
+    {
+        popUpText.gameObject.SetActive(true);
+    }
+
+    public void CloseTextPopUp()
+    {
+        popUpText.gameObject.SetActive(false);
     }
 
     public void OpenGameOverPanel()

@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e2b4825cf037146bd2fabc3bc27dfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 3
+  ID: 2
   hasMerged: 0
   isDragging: 0
   isDropped: 0

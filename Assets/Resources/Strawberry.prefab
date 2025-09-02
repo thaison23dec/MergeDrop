@@ -136,7 +136,7 @@ MonoBehaviour:
   mergeSoundClip: {fileID: 8300000, guid: 90a611591af39954590c0dc53f9286a3, type: 3}
   prefabID: 0
   type: 0
-  mergeParticle: {fileID: 2144315928939099216, guid: 9b8d818e8528f3943b6069b4a198628d, type: 3}
+  mergeParticle: {fileID: 549145233853534141, guid: e38863c9953a56a43a9a8914928cfe48, type: 3}
   mergeScore: 10
 --- !u!58 &739536333811774430
 CircleCollider2D:
