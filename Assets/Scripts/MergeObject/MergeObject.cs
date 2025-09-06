@@ -72,7 +72,7 @@ public class MergeObject : MonoBehaviour
         {
             if (ID < other.ID) return;
 
-            if(type == MergeObjectType.Strawberry)
+            if(type == MergeObjectType.Pumpkin)
             {
                 TicketManager.instance.IncreaseTicket();
 
