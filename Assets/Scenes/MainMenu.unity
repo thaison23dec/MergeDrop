@@ -283,31 +283,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 478329803}
-  - component: {fileID: 478329802}
+  - component: {fileID: 478329804}
   m_Layer: 0
-  m_Name: UIManager
+  m_Name: UI_HOME
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &478329802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 478329801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c07b33dd2afa76d4c86b315c76d906e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  optionPanel: {fileID: 0}
-  gameOverPanel: {fileID: 0}
-  background: {fileID: 0}
-  nextFruitImage: {fileID: 0}
-  scoreText: {fileID: 0}
 --- !u!4 &478329803
 Transform:
   m_ObjectHideFlags: 0
@@ -323,6 +306,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &478329804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478329801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea642a9e388d2b5488ebcde7f55f0637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &487572725
 GameObject:
   m_ObjectHideFlags: 0
@@ -877,9 +872,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478329802}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: Restart
+      - m_Target: {fileID: 478329804}
+        m_TargetAssemblyTypeName: UIHome, Assembly-CSharp
+        m_MethodName: NewGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1167,8 +1162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a7d7ed9a1b73c8488746255c5aa857c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isContinue: 0
-  isNewGame: 0
+  currentGameState: 0
 --- !u!1 &1445954712
 GameObject:
   m_ObjectHideFlags: 0
@@ -1252,9 +1246,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478329802}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: ContinueLastSavedGame
+      - m_Target: {fileID: 478329804}
+        m_TargetAssemblyTypeName: UIHome, Assembly-CSharp
+        m_MethodName: Continue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

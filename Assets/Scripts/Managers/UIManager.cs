@@ -16,8 +16,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image nextFruitImage;
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text popUpText;
+    [SerializeField] private TextMeshProUGUI notificationText;
+    [SerializeField] private TextMeshProUGUI ticketNumberText;
+    [SerializeField] private float fadeDuration = 2f;
 
     public bool isOpeningPanel = false;
+    private Coroutine currentRoutine;
 
     private void Awake()
     {
@@ -30,6 +34,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         ShowNextFruitImage();
+        UpdateTicketNumber();
     }
 
     public void OpenMenu()
@@ -87,6 +92,41 @@ public class UIManager : MonoBehaviour
         popUpText.gameObject.SetActive(false);
     }
 
+    public void ShowNotification(string message)
+    {
+        if (currentRoutine != null)
+        {
+            StopCoroutine(currentRoutine);
+        }
+
+        currentRoutine = StartCoroutine(FadeText(message));
+    }
+
+    private IEnumerator FadeText(string message)
+    {
+        notificationText.text = message;
+
+        Color color = notificationText.color;
+        color.a = 1f;
+        notificationText.color = color;
+
+        yield return new WaitForSeconds(1f);
+
+        float elapsed = 0f;
+        while (elapsed < fadeDuration)
+        {
+            elapsed += Time.deltaTime;
+            float alpha = Mathf.Lerp(1f, 0f, elapsed / fadeDuration);
+            color.a = alpha;
+            notificationText.color = color;
+            yield return null;
+        }
+
+        color.a = 0f;
+        notificationText.color = color;
+        currentRoutine = null;
+    }
+
     public void OpenGameOverPanel()
     {
         gameOverPanel.gameObject.SetActive(true);
@@ -122,6 +162,11 @@ public class UIManager : MonoBehaviour
     public void UpdateScore()
     {
         scoreText.text = ScoreManager.instance.currentScore.ToString();
+    }
+
+    public void UpdateTicketNumber()
+    {
+        ticketNumberText.text = "x" + TicketManager.instance.currentTicketNumber.ToString();
     }
 
     public void ShowNextFruitImage()

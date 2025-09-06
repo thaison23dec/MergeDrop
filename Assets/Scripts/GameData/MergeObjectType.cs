@@ -12,3 +12,9 @@ public enum MergeObjectType
     Watermelon,
     Pumpkin
 }
+
+public enum ItemType
+{
+    SmallFruit,
+    ChosenFruit
+}

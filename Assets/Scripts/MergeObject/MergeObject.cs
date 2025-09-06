@@ -72,24 +72,43 @@ public class MergeObject : MonoBehaviour
         {
             if (ID < other.ID) return;
 
-            Vector2 mergedObjPos = (transform.position + other.transform.position) / 2f;
-            GameObject newFruit =  Instantiate(mergedObj, mergedObjPos, Quaternion.identity);
+            if(type == MergeObjectType.Strawberry)
+            {
+                TicketManager.instance.IncreaseTicket();
 
-            newFruit.GetComponent<MergeObject>().ParticleMergeFruit();
-            newFruit.GetComponent<MergeObject>().isDropped = true;
-            newFruit.GetComponent<MergeObject>().isDraggable = false;
-            newFruit.GetComponent<MergeObject>().rb.bodyType = RigidbodyType2D.Dynamic;
+                SoundFXManager.instance.PlaySoundFXClip(mergeSoundClip, gameObject.transform, 1f);
+                ScoreManager.instance.IncreaseScore(mergeScore);
 
-            SoundFXManager.instance.PlaySoundFXClip(mergeSoundClip, mergedObj.transform, 1f);
+                UIManager.instance.ShowNotification("+1 Ticket");
+                UIManager.instance.UpdateScore();
 
-            ScoreManager.instance.IncreaseScore(mergeScore);
-            UIManager.instance.UpdateScore();
+                hasMerged = true;
+                other.hasMerged = true;
+                ParticleMergeFruit();
+                Destroy(gameObject);
+                Destroy(collision.gameObject);
+            } else
+            {
+                Vector2 mergedObjPos = (transform.position + other.transform.position) / 2f;
+                GameObject newFruit =  Instantiate(mergedObj, mergedObjPos, Quaternion.identity);
 
-            hasMerged = true;
-            other.hasMerged = true;
+                newFruit.GetComponent<MergeObject>().ParticleMergeFruit();
+                newFruit.GetComponent<MergeObject>().isDropped = true;
+                newFruit.GetComponent<MergeObject>().isDraggable = false;
+                newFruit.GetComponent<MergeObject>().rb.bodyType = RigidbodyType2D.Dynamic;
 
-            Destroy(gameObject);
-            Destroy(collision.gameObject);
+                SoundFXManager.instance.PlaySoundFXClip(mergeSoundClip, mergedObj.transform, 1f);
+
+                ScoreManager.instance.IncreaseScore(mergeScore);
+                UIManager.instance.UpdateScore();
+
+                hasMerged = true;
+                other.hasMerged = true;
+
+                Destroy(gameObject);
+                Destroy(collision.gameObject);
+            }
+
         }
     }
 
@@ -108,25 +127,42 @@ public class MergeObject : MonoBehaviour
         {
             if (ID < other.ID) return;
 
-            Vector2 mergedObjPos = (transform.position + other.transform.position) / 2f;
-            GameObject newFruit = Instantiate(mergedObj, mergedObjPos, Quaternion.identity);
+            if (type == MergeObjectType.Pumpkin)
+            {
+                TicketManager.instance.IncreaseTicket();
+                SoundFXManager.instance.PlaySoundFXClip(mergeSoundClip, mergedObj.transform, 1f);
 
-            newFruit.GetComponent<MergeObject>().ParticleMergeFruit();
-            newFruit.GetComponent<MergeObject>().isDropped = true;
-            newFruit.GetComponent<MergeObject>().isDraggable = false;
-            newFruit.GetComponent<MergeObject>().isDraggable = false;
-            newFruit.GetComponent<MergeObject>().rb.bodyType = RigidbodyType2D.Dynamic;
+                ScoreManager.instance.IncreaseScore(mergeScore);
+                UIManager.instance.UpdateScore();
 
-            SoundFXManager.instance.PlaySoundFXClip(mergeSoundClip, mergedObj.transform, 1f);
+                hasMerged = true;
+                other.hasMerged = true;
 
-            ScoreManager.instance.IncreaseScore(mergeScore);
-            UIManager.instance.UpdateScore();
+                Destroy(gameObject);
+                Destroy(collision.gameObject);
+            }
+            else
+            {
+                Vector2 mergedObjPos = (transform.position + other.transform.position) / 2f;
+                GameObject newFruit = Instantiate(mergedObj, mergedObjPos, Quaternion.identity);
 
-            hasMerged = true;
-            other.hasMerged = true;
+                newFruit.GetComponent<MergeObject>().ParticleMergeFruit();
+                newFruit.GetComponent<MergeObject>().isDropped = true;
+                newFruit.GetComponent<MergeObject>().isDraggable = false;
+                newFruit.GetComponent<MergeObject>().rb.bodyType = RigidbodyType2D.Dynamic;
 
-            Destroy(gameObject);
-            Destroy(collision.gameObject);
+                SoundFXManager.instance.PlaySoundFXClip(mergeSoundClip, mergedObj.transform, 1f);
+
+                ScoreManager.instance.IncreaseScore(mergeScore);
+                UIManager.instance.UpdateScore();
+
+                hasMerged = true;
+                other.hasMerged = true;
+
+                Destroy(gameObject);
+                Destroy(collision.gameObject);
+            }
+
         }
     }
 
