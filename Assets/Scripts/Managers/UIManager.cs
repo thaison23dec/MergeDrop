@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text popUpText;
     [SerializeField] private TextMeshProUGUI notificationText;
     [SerializeField] private TextMeshProUGUI ticketNumberText;
+    [SerializeField] private TextMeshProUGUI gameOverScoreText;
     [SerializeField] private float fadeDuration = 2f;
 
     public bool isOpeningPanel = false;
@@ -167,6 +168,11 @@ public class UIManager : MonoBehaviour
     public void UpdateTicketNumber()
     {
         ticketNumberText.text = "x" + TicketManager.instance.currentTicketNumber.ToString();
+    }
+
+    public void UpdateGameOverScore()
+    {
+        gameOverScoreText.text = "Score: " + ScoreManager.instance.currentScore.ToString();
     }
 
     public void ShowNextFruitImage()

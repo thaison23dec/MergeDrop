@@ -6,3 +6,4 @@ public class Pointer : MonoBehaviour
 {
     public bool pointerIsDragging = false;
 }
+

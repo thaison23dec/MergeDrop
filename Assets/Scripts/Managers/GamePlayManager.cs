@@ -102,6 +102,7 @@ public class GamePlayManager : MonoBehaviour
     {
         canDrag = false;
         limitLine.gameObject.GetComponent<LimitLine>().TurnRed();
+        UIManager.instance.UpdateGameOverScore();
         GameManager.instance.currentGameState = GameManager.GameState.GameOver;
         SaveSystem.ClearData();
         UIManager.instance.OpenGameOverPanel();
